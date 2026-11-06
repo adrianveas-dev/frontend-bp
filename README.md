@@ -1,5 +1,7 @@
 # Frontend - BP
 
+[Repositorio en GitHub](https://github.com/adrianveas-dev/frontend-bp)
+
 Aplicación para administrar productos financieros. Permite buscar, listar, agregar, editar y eliminar productos.
 
 La carpeta frontend-bp contiene Angular y el middleware Node.js. La carpeta backend-bp contiene la API con Express. Cada proyecto tiene sus propias dependencias y pruebas.
