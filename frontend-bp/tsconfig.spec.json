@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["jest", "node"],
+    "module": "CommonJS",
+    "target": "ES2022",
+    "isolatedModules": true
+  },
+  "include": ["src/**/*.ts", "setup-jest.ts"]
+}

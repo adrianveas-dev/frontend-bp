@@ -1,0 +1,23 @@
+.bank-header {
+  height: 88px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bank-header a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #243c70;
+  text-decoration: none;
+}
+.bank-header span {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+main {
+  min-height: calc(100dvh - 88px);
+}

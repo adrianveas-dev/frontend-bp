@@ -1,0 +1,162 @@
+<section class="list-page" aria-label="Productos financieros">
+  <div class="toolbar">
+    <label class="sr-only" for="search">Buscar productos</label>
+    <input
+      id="search"
+      type="search"
+      placeholder="Buscar…"
+      [value]="query()"
+      (input)="search($any($event.target).value)"
+    />
+    <a class="button primary" routerLink="/products/new">Agregar</a>
+  </div>
+  @if (notice()) {
+    <div class="notice" role="status">
+      {{ notice() }} <button aria-label="Cerrar mensaje" (click)="dismissNotice()">×</button>
+    </div>
+  }
+  @if (error()) {
+    <div class="error-state" role="alert">
+      <p>{{ error() }}</p>
+      <button class="button secondary" (click)="load()">Reintentar</button>
+    </div>
+  } @else {
+    <div class="table-card" [attr.aria-busy]="loading()">
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th class="logo-column">Logo</th>
+              <th>Nombre del producto</th>
+              <th>
+                Descripción
+                <app-info-tooltip
+                  tooltipId="description-help"
+                  label="Información de descripción"
+                  text="Descripción del producto financiero y sus características principales."
+                />
+              </th>
+              <th>
+                Fecha de liberación
+                <app-info-tooltip
+                  tooltipId="release-help"
+                  label="Información de fecha de liberación"
+                  text="Fecha a partir de la cual el producto estará disponible para los clientes."
+                />
+              </th>
+              <th>
+                Fecha de reestructuración
+                <app-info-tooltip
+                  tooltipId="revision-help"
+                  label="Información de fecha de reestructuración"
+                  text="Fecha de revisión de los términos y condiciones del producto, un año después de su liberación."
+                />
+              </th>
+              <th><span class="sr-only">Acciones</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (loading()) {
+              @for (row of [1, 2, 3, 4, 5]; track row) {
+                <tr aria-hidden="true">
+                  @for (cell of [1, 2, 3, 4, 5, 6]; track cell) {
+                    <td><div class="skeleton"></div></td>
+                  }
+                </tr>
+              }
+            } @else {
+              @for (product of visible(); track product.id) {
+                <tr>
+                  <td class="logo-column">
+                    <div class="logo">
+                      <span aria-hidden="true">{{ product.name.slice(0, 2).toUpperCase() }}</span
+                      ><img
+                        [src]="product.logo"
+                        [alt]="'Logo de ' + product.name"
+                        (error)="imageFailed($event)"
+                      />
+                    </div>
+                  </td>
+                  <td class="product-name">{{ product.name }}</td>
+                  <td class="description">{{ product.description }}</td>
+                  <td>{{ product.date_release | date: 'dd/MM/yyyy' : 'UTC' }}</td>
+                  <td>{{ product.date_revision | date: 'dd/MM/yyyy' : 'UTC' }}</td>
+                  <td class="actions">
+                    <button
+                      class="menu-trigger"
+                      [attr.aria-label]="'Acciones de ' + product.name"
+                      aria-haspopup="menu"
+                      [attr.aria-expanded]="menu() === product.id"
+                      (click)="toggleMenu(product.id, $event)"
+                    >
+                      ⋮
+                    </button>
+                    @if (menu() === product.id) {
+                      <div class="dropdown" role="menu">
+                        <a role="menuitem" [routerLink]="['/products', product.id, 'edit']"
+                          >Editar</a
+                        ><button role="menuitem" (click)="askDelete(product)">Eliminar</button>
+                      </div>
+                    }
+                  </td>
+                </tr>
+              }
+            }
+          </tbody>
+        </table>
+      </div>
+      @if (!loading() && !filtered().length) {
+        <p class="empty" role="status">
+          {{
+            query()
+              ? 'No encontramos productos con esa búsqueda.'
+              : 'Todavía no hay productos. Agrega el primero para comenzar.'
+          }}
+        </p>
+      }
+      <div class="table-footer">
+        <span aria-live="polite"
+          >{{ filtered().length }} Resultados
+          <small>· Mostrando {{ start() }}–{{ end() }}</small></span
+        >
+        <div class="pagination">
+          <button
+            aria-label="Página anterior"
+            [disabled]="page() === 1 || loading()"
+            (click)="move(-1)"
+          >
+            ‹</button
+          ><span>{{ page() }} / {{ pages() }}</span
+          ><button
+            aria-label="Página siguiente"
+            [disabled]="page() === pages() || loading()"
+            (click)="move(1)"
+          >
+            ›
+          </button>
+        </div>
+        <label class="sr-only" for="page-size">Registros por página</label
+        ><select id="page-size" [value]="size()" (change)="resize($any($event.target).value)">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+    </div>
+  }
+</section>
+<dialog #dialog aria-labelledby="delete-title" (cancel)="cancel($event)">
+  <div class="modal-body">
+    <h2 id="delete-title">¿Estás seguro de eliminar el producto {{ selected()?.name }}?</h2>
+    @if (deleteError()) {
+      <p class="field-error" role="alert">{{ deleteError() }}</p>
+    }
+  </div>
+  <div class="modal-actions">
+    <button autofocus class="button secondary" [disabled]="deleting()" (click)="cancel()">
+      Cancelar</button
+    ><button class="button primary" [disabled]="deleting()" (click)="confirmDelete()">
+      {{ deleting() ? 'Eliminando…' : 'Confirmar' }}
+    </button>
+  </div>
+</dialog>

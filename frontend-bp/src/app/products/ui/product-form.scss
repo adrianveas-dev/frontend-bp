@@ -1,0 +1,101 @@
+.form-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+.back {
+  display: inline-block;
+  color: #34456e;
+  font-size: 13px;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+.form-card {
+  background: white;
+}
+h1 {
+  font-size: 25px;
+  text-align: center;
+  margin: 0;
+  padding: 26px 20px;
+  border-bottom: 1px solid #b9bdc6;
+  font-weight: 600;
+}
+.form-content {
+  border: 0;
+  padding: 28px 32px 10px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  min-width: 0;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+input {
+  width: 100%;
+  min-height: 42px;
+}
+small {
+  font-size: 11px;
+  margin-top: 6px;
+  line-height: 1.4;
+  color: #6c7382;
+}
+small:empty {
+  display: none;
+}
+.field-error {
+  color: #c5343b;
+}
+.invalid {
+  border-color: #db454d;
+  box-shadow: 0 0 0 1px #db454d33;
+}
+.form-actions {
+  padding: 32px 20px 38px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+.form-actions button {
+  min-width: 110px;
+}
+.form-error {
+  padding: 18px 32px 0;
+  color: #b82c36;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.text-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #294771;
+  text-decoration: underline;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+  margin-top: 6px;
+}
+@media (max-width: 520px) {
+  .form-page {
+    padding: 24px 16px;
+  }
+  .form-content {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 18px;
+  }
+  h1 {
+    font-size: 22px;
+  }
+}

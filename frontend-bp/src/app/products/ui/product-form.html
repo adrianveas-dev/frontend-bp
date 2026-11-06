@@ -1,0 +1,113 @@
+<section class="form-page">
+  <a class="back" routerLink="/products">‹ Volver al listado</a>
+  <div class="form-card">
+    <h1>{{ id ? 'Formulario de Edición' : 'Formulario de Registro' }}</h1>
+    @if (loading()) {
+      <div class="form-content" role="status" aria-label="Cargando producto">
+        @for (row of [1, 2, 3, 4, 5, 6]; track row) {
+          <div class="skeleton"></div>
+        }
+      </div>
+    } @else {
+      @if (error()) {
+        <div class="form-error" role="alert">
+          {{ error() }}
+          @if (id) {
+            <button type="button" class="text-button" (click)="load()">Reintentar carga</button>
+          }
+        </div>
+      }
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <fieldset [disabled]="saving()" class="form-content">
+          <div class="field">
+            <label for="id">ID</label
+            ><input
+              id="id"
+              formControlName="id"
+              autocomplete="off"
+              [class.invalid]="fieldError('id')"
+              [attr.aria-invalid]="!!fieldError('id')"
+              aria-describedby="id-error id-status"
+            />
+            <small id="id-error" class="field-error" aria-live="polite">{{
+              fieldError('id')
+            }}</small>
+            <small id="id-status" role="status">{{
+              form.controls.id.pending ? 'Verificando ID…' : ''
+            }}</small>
+            @if (form.controls.id.hasError('verificationFailed')) {
+              <button class="text-button" type="button" (click)="retryVerification()">
+                Reintentar verificación
+              </button>
+            }
+          </div>
+          <div class="field">
+            <label for="name">Nombre</label
+            ><input
+              id="name"
+              formControlName="name"
+              [class.invalid]="fieldError('name')"
+              [attr.aria-invalid]="!!fieldError('name')"
+              aria-describedby="name-error"
+            /><small id="name-error" class="field-error">{{ fieldError('name') }}</small>
+          </div>
+          <div class="field">
+            <label for="description">Descripción</label
+            ><input
+              id="description"
+              formControlName="description"
+              [class.invalid]="fieldError('description')"
+              [attr.aria-invalid]="!!fieldError('description')"
+              aria-describedby="description-error"
+            /><small id="description-error" class="field-error">{{
+              fieldError('description')
+            }}</small>
+          </div>
+          <div class="field">
+            <label for="logo">Logo</label
+            ><input
+              id="logo"
+              formControlName="logo"
+              placeholder="URL del logo"
+              [class.invalid]="fieldError('logo')"
+              [attr.aria-invalid]="!!fieldError('logo')"
+              aria-describedby="logo-error"
+            /><small id="logo-error" class="field-error">{{ fieldError('logo') }}</small>
+          </div>
+          <div class="field">
+            <label for="release">Fecha Liberación</label
+            ><input
+              id="release"
+              type="date"
+              formControlName="date_release"
+              [min]="minimumDate"
+              [class.invalid]="fieldError('date_release')"
+              [attr.aria-invalid]="!!fieldError('date_release')"
+              aria-describedby="release-error"
+            /><small id="release-error" class="field-error">{{ fieldError('date_release') }}</small>
+          </div>
+          <div class="field">
+            <label for="revision">Fecha Revisión</label
+            ><input
+              id="revision"
+              type="date"
+              formControlName="date_revision"
+              aria-describedby="revision-help"
+            /><small id="revision-help">Un año después de la liberación.</small>
+          </div>
+        </fieldset>
+        <div class="form-actions">
+          <button class="button secondary" type="button" [disabled]="saving()" (click)="reset()">
+            Reiniciar</button
+          ><button
+            class="button primary"
+            type="submit"
+            [disabled]="form.invalid || form.pending || saving()"
+          >
+            {{ saving() ? 'Enviando…' : 'Enviar' }}
+          </button>
+        </div>
+      </form>
+    }
+  </div>
+</section>
