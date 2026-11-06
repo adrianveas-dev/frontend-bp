@@ -23,7 +23,7 @@ try {
   });
   server.listen(port, '127.0.0.1', () =>
     console.log(
-      `Frontend - BP ${production ? 'producción' : 'middleware'} en http://127.0.0.1:${port}`,
+      `Frontend - BP | Ing. Adrian Veas | ${production ? 'Producción' : 'Middleware'} en http://127.0.0.1:${port}`,
     ),
   );
 } catch (error) {

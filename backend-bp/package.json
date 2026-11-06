@@ -1,5 +1,6 @@
 {
   "name": "backend-bp",
+  "author": "Ing. Adrian Veas",
   "version": "1.0.0",
   "description": "API local de productos financieros",
   "main": "dist/main.js",

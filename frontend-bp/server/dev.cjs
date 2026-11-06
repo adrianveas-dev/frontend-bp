@@ -11,7 +11,7 @@ try {
     process.exitCode = 1;
   });
   gateway.listen(config.middlewarePort, '127.0.0.1', () => {
-    console.log(`Middleware privado preparado en el puerto ${config.middlewarePort}`);
+    console.log(`Frontend - BP | Ing. Adrian Veas | Middleware en el puerto ${config.middlewarePort}`);
     const childEnv = { ...process.env, NG_CLI_ANALYTICS: 'false' };
     delete childEnv.BP_API_KEY;
     delete childEnv.BP_BACKEND_URL;

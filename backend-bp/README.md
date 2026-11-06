@@ -1,5 +1,7 @@
 # Backend - BP
 
+Autor: Ing. Adrian Veas.
+
 [Repositorio en GitHub](https://github.com/adrianveas-dev/frontend-bp)
 
 API Node.js con Express para administrar productos financieros. Recibe las solicitudes del middleware del frontend y guarda los productos en memoria.

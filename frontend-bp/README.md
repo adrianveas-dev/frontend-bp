@@ -1,5 +1,7 @@
 # Frontend - BP
 
+Autor: Ing. Adrian Veas.
+
 [Repositorio en GitHub](https://github.com/adrianveas-dev/frontend-bp)
 
 Interfaz Angular para administrar productos financieros. Permite listar, buscar, agregar, editar y eliminar productos. Incluye un middleware Node.js para conectarse con el backend usando una clave privada.

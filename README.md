@@ -1,5 +1,7 @@
 # Frontend - BP
 
+Autor: Ing. Adrian Veas.
+
 [Repositorio en GitHub](https://github.com/adrianveas-dev/frontend-bp)
 
 Aplicación para administrar productos financieros. Permite buscar, listar, agregar, editar y eliminar productos.
