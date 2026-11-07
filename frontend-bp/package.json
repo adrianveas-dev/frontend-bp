@@ -3,6 +3,7 @@
   "author": "Ing. Adrian Veas",
   "version": "0.0.0",
   "scripts": {
+    "seed:demo": "node server/seed-demo.cjs",
     "ng": "ng",
     "start": "node server/dev.cjs",
     "build": "ng build",

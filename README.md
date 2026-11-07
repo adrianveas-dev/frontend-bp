@@ -77,6 +77,12 @@ Para iniciar producción, detener los servidores de desarrollo y ejecutar estos 
 
 ## Datos
 
+Para cargar productos de ejemplo con ambos servidores iniciados:
+
+    npm run seed:demo --prefix frontend-bp
+
+El comando completa el catálogo hasta 25 productos y conserva los registros existentes. El listado permite ver 5, 10 o 20 por página.
+
 Los productos se guardan en memoria. Recargar el navegador conserva los datos, pero reiniciar el backend los elimina.
 
 ## Documentación
@@ -85,4 +91,4 @@ Los productos se guardan en memoria. Recargar el navegador conserva los datos, p
 
 [Resultados de pruebas](https://docs.google.com/document/d/1z_K7TeOnKTCGz3j43ixGn5d9OMwOxtGEcbgZ-9CfA6Q/edit)
 
-El informe registra las pruebas anteriores al middleware. Los README de cada proyecto explican la configuración actual.
+El informe conserva los resultados originales e incluye capturas posteriores de logos y paginación.

@@ -43,6 +43,12 @@ Para iniciar solo el middleware:
 
 ## Pruebas
 
+Con ambos servidores iniciados, cargar productos de ejemplo:
+
+    npm run seed:demo
+
+El comando completa el catálogo hasta 25 productos sin borrar los existentes. Los ejemplos incluyen logos públicos. Si se reinicia el backend, se pueden volver a cargar con el mismo comando.
+
     npm test
     npm run test:coverage
 
@@ -73,4 +79,4 @@ Logos de prueba para el campo Logo:
 
 [Resultados de pruebas](https://docs.google.com/document/d/1z_K7TeOnKTCGz3j43ixGn5d9OMwOxtGEcbgZ-9CfA6Q/edit)
 
-El informe registra las pruebas anteriores al middleware. Este README describe su configuración actual.
+El informe conserva los resultados originales e incluye capturas posteriores de logos y paginación.
