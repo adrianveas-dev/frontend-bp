@@ -61,6 +61,14 @@ Los servidores escuchan en 127.0.0.1. Un despliegue remoto necesita un proxy y H
 
 ## Documentación
 
+Logos de prueba para el campo Logo:
+
+[Tarjeta](https://raw.githubusercontent.com/adrianveas-dev/frontend-bp/main/frontend-bp/public/logos/tarjeta.svg)
+
+[Ahorro](https://raw.githubusercontent.com/adrianveas-dev/frontend-bp/main/frontend-bp/public/logos/ahorro.svg)
+
+[Inversión](https://raw.githubusercontent.com/adrianveas-dev/frontend-bp/main/frontend-bp/public/logos/inversion.svg)
+
 [Dominio y arquitectura](https://docs.google.com/document/d/1_X_phGaBK4g7nDaxyJhIwYTmnyV_70XldUiC07FXBzo/edit)
 
 [Resultados de pruebas](https://docs.google.com/document/d/1z_K7TeOnKTCGz3j43ixGn5d9OMwOxtGEcbgZ-9CfA6Q/edit)
